@@ -28,7 +28,7 @@ DEBUG = os.environ.get('DEBUG_MODE') or False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'meetupscheduler.herokuapp.com']
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = '*_$r6)tfkkmua6$^m+vz*=z&+i3py5f8-iqgb!y6i3^s-05kyb'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
