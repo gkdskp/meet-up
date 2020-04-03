@@ -1,0 +1,50 @@
+{% extends 'scheduler/detail.html' %}
+
+{% block title %} Invite People {% endblock %}
+{% block desc %} Invite people to the meeting {% endblock %}
+
+{% block main %}
+	<form method="POST">
+		{% csrf_token %}
+		{% for field in form %}
+			{{ field.label_tag }}<br/>
+			{{ field }}<br/>
+			<p class="errors">{{ field.errors }}</p>
+		{% endfor %}
+
+		People: <br/>
+		<input list="users" id="user-input">
+		<button class="btn" id="add-btn"><span class="material-icons">add</span></button>
+		<br/><br/>
+
+		<datalist id="users">
+			{% for user in users %}
+				<option value="{{user.username}}" data-id="{{ user.username }}">
+			{% endfor %}
+		</datalist>
+
+		<p class="invitees" id="invitees"></p>
+		<input type="hidden" name="users" id="users" value="">
+		
+		<button type="submit" class="btn">
+			<span class="material-icons mx-2">check</span>
+			Invite
+		</button>
+
+	</form>
+{% endblock %}
+
+{% block imports %}
+	<script>
+		const inputelem = document.getElementById("users")
+		const btn = document.getElementById("add-btn")
+		const userlist = document.getElementById("invitees")
+		const username = document.getElementById("user-input")
+		btn.onclick = (e) => {
+			e.preventDefault();
+			inputelem.value += username.value+","
+			userlist.innerText += username.value+ ", "
+			username.value = ""
+		}
+	</script>
+{% endblock %}

@@ -1,0 +1,100 @@
+body {
+	font-family: 'Open Sans';
+}
+
+.brand {
+	font-weight: bold;
+
+	font-family: 'Gilroy';
+	color: #7E57C2 !important;
+}
+
+.navbar-brand {
+	font-size: 1.8em;
+}
+
+.container-fluid {
+	padding: 0px 12px;
+	overflow-x: hidden;
+}
+
+input {
+	border-radius: 0;
+	width: 350px;
+	height: 40px;
+}
+
+.icon {
+	font-family: 'Material Icons';
+}
+
+.bg-light .nav-item .nav-link{
+	color: #000000;
+}
+
+.navbar-toggler-icon, .navbar-toggler {
+	color: #7E57C2;
+}
+
+.signup-btn {
+	border: 1px solid #7E57C2;
+	color: #7E57C2;
+	background: #ffffff;
+}
+
+.nav-item.active a, .nav-item a:hover{
+	color: #7E57C2 !important;
+}
+
+.btn .material-icons {
+
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.btn {
+	
+    display: inline-flex;
+    vertical-align: middle;
+	background: #7E57C2;
+	border-radius: 0;
+	color: #ffffff;
+}
+
+.btn:hover {
+	color: #7E57C2;
+	background: #ffffff;
+	border: 1px solid #7E57C2;
+}
+
+.btn.bg-danger:hover {
+	color: red;
+	background: #ffffff !important;
+	border: 1px solid red;
+}
+
+
+.btn-large {
+	padding: 12px 150px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+
+
+.navbar .nav-item a {
+	color: #000000;
+
+	font-size: 1.2em;
+}
+
+.btn a {
+	color: #ffffff !important;
+}
+
+
+p {
+	line-height: 1.5em;
+}

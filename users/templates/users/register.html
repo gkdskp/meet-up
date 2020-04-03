@@ -1,0 +1,24 @@
+{% extends 'scheduler/detail.html' %}
+
+{% block title %} Sign Up {% endblock %}
+{% block desc %}
+	Create an account now<br>
+	
+	If you already have an account you can log in using this 
+	<a href="{% url 'login_view' %}">link</a>
+{% endblock %}
+
+{% block main %}
+	<form method="POST">
+		{% csrf_token %}
+		{% for field in form %}
+			{{ field.label_tag }}<br/>
+			{{ field }}<br/>
+			<p class="errors">{{ field.errors }}</p>
+		{% endfor %}
+		<button type="submit" class="btn">
+			<span class="material-icons mx-2">check</span>
+			Create
+		</button>
+	</form>
+{% endblock %}

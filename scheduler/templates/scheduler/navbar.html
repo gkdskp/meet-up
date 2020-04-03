@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg sticky-top bg-light">
+	<a class="navbar-brand brand mx-5" href="{% url 'home_view' %}">meet up!</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="material-icons">menu</span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav my-2 my-lg-0 ml-auto mr-5">
+				{% if user.is_authenticated %}
+
+				<li class="nav-item mx-2 {% if request.path == '/meeting/' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'home_view' %}">Home</a>
+				</li>
+				
+				<li class="nav-item mx-2 {% if request.path == 'notifications/' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'notifications_view' %}">Notifications
+						{% if notif_count %} <span class="badge">{{ notif_count }}</span> {% endif %}
+					</a>
+				</li>
+
+				<li class="nav-item mx-2 {% if request.path == '/user/profile/' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'profile_view' %}">Profile</a>
+				</li>
+				<li class="nav-item mx-2 {% if request.path == 'user/logout' %} active {% endif %}">
+					<a class="nav-link" href="{% url 'logout_view' %}">Log Out</a>
+				</li>
+					
+					</li>
+				{% else %}
+
+				<li class="nav-item mx-2">
+					<a class="nav-link" href="{% url 'home_view' %}">Home</a>
+				</li>
+				<li class="nav-item mx-2">
+					<a class="nav-link" href="{% url 'home_view' %}#features">Features</a>
+				</li>
+				<li class="nav-item mx-2">
+					<a class="nav-link" href="{% url 'home_view' %}#docs">Docs</a>
+				</li>
+				<li class="nav-item mx-2">
+					<button class="btn login-btn btn-outline-success my-2 my-sm-0">
+						<a href="{% url 'login_view' %}"><span class="material-icons mr-1">flight_takeoff</span>Get
+							Started</button></a>
+				{% endif %}
+			</ul>
+	</div>
+</nav>

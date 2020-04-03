@@ -1,0 +1,42 @@
+{% extends 'scheduler/base.html' %}
+
+{% block content %}
+<div class="row my-5">
+	<h1 class="cols-lg-8 mx-3">Meetings</h1>
+	<div class="cols-lg-2 my-auto ml-auto mx-3">
+		<a href="{% url 'create_view' %}">
+			<button class="btn">
+			<span class="material-icons">
+				add
+			</span>
+			New Meeting
+		</button>
+		</a>
+		
+	</div>
+</div>
+<div class="row">
+	<table class="table table-striped">
+		<thead>
+		  <tr>
+			<th scope="col">Meeting</th>
+			<th scope="col">Venue</th>
+			<th scope="col">Start Time</th>
+			<th scope="col">End Time</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  {% for meeting in meetings %}
+			<tr>
+				<td scope="col"><a href="{% url 'meeting_view' meeting.mid %}"> {{ meeting.title }}</a></td>
+				<td scope="col">{{ meeting.location }}<br/>
+				{{ meeting.city }}</td>
+				<td scope="col">{{ meeting.start_time }}</td>
+				<td scope="col">{{ meeting.end_time }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	  </table>
+</div>
+
+{% endblock %}

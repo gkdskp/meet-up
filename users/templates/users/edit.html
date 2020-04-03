@@ -1,0 +1,29 @@
+{% extends 'scheduler/detail.html' %}
+
+{% block title %} Edit Profile {% endblock %}
+{% block desc %} 
+	You can reset your password using this 
+	<a href="{% url 'login_view' %}">link</a>
+{% endblock %}
+
+{% block main %}
+	<form method="POST">
+		{% csrf_token %}
+		{% for field in u_form %}
+			{{ field.label_tag }}<br/>
+			{{ field }}<br/>
+			<p class="errors">{{ field.errors }}</p>
+		{% endfor %}
+
+		{% for field in p_form %}
+			{{ field.label_tag }}<br/>
+			{{ field }}<br/>
+			<p class="errors">{{ field.errors }}</p>
+		{% endfor %}
+
+		<button type="submit" class="btn">
+			<span class="material-icons mx-2">check</span>
+			Save
+		</button>
+	</form>
+{% endblock %}

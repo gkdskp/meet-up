@@ -1,0 +1,24 @@
+{% extends 'scheduler/detail.html' %}
+
+{% block title %} Delete Meeting {% endblock %}
+{% block desc %} Are you sure you want to delete {{ meeting.title }}? {% endblock %}
+
+{% block main %}
+	<form method="POST">
+		{% csrf_token %}
+		Message:<br/>
+		<textarea cols="40" rows="10" name="message">
+		</textarea><br>
+		<button type="submit" class="btn btn-danger">
+			<span class="material-icons mx-2">delete</span>
+			Delete
+		</button>
+
+		<a href="{% url 'meeting_view' meeting.mid %}">
+			<button class="btn">
+				<span class="material-icons mx-2">cancel</span>
+				Cancel
+			</button>
+		</a>
+	</form>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'scheduler/base.html' %}
+{% load static %}
+{% block imports %}
+	<link rel="stylesheet" href="{% static 'scheduler/index.css' %}">
+{% endblock %}
+{% block content %}
+	<div class="banner-container">
+		<div class="row m-md-5">
+			<div class="ml-auto mr-auto col-md-5 hero-text my-md-5 ">
+				<h1>Make your next appoinment with <span class="brand">meet up!</span></h1>
+				<p> List information about the FILEs (the current directory by default). Sort
+					entries alphabetically if none of -cftuvSUX nor --sort is specified.
+
+					Mandatory arguments to long options are mandatory for short options too.</p>
+			</div>
+			<div class="ml-auto col-md-4 my-auto mr-auto">
+
+				<h2>Join <span class="brand">meet up!</span></h2>
+				<a href="{% url 'register_view' %}">
+					<button class="btn text-center mt-3">
+						<span class="material-icons mx-1">account_circle</span>
+						Create an account
+					</button>
+				</a>
+				<p class="my-2">Already have an account? <a href="{% url 'login_view' %}">Sign in</a> now.
+			</div>
+		</div>
+	</div>
+	<div class="features-container" id="features">
+		<div class="row my-5">
+			<div class="col-md-12">
+				<h1 class="text-center">Why <span class="brand">meet up!</span>?</h1>
+			</div>
+
+		</div>
+		<div class="row my-5">
+			<div class="col-md-2 ml-auto">
+				<span class="material-icons">speed</span>
+				<h3 class="my-3">Fast</h3>
+				<p><span class="brand">meet up!</span> can information about the FILEs (the current directory by default).
+					Sort
+					entries alphabetically if none of -cftuvSUX nor</p>
+			</div>
+			<div class="col-md-2 ml-auto mr-auto">
+				<span class="material-icons">vpn_key</span>
+				<h3 class="my-3">Secure</h3>
+				<p>information about the FILEs (the current directory by default). Sort
+					entries alphabetically if none of -cftuvSUX nor</p>
+			</div>
+			<div class="col-md-2 mr-auto">
+
+				<span class="material-icons">language</span>
+				<h3 class="my-3">Worldwide</h3>
+				<p>information about the FILEs (the current directory by default). Sort
+					entries alphabetically if none of -cftuvSUX nor</p>
+			</div>
+		</div>
+
+		<div class="row my-5">
+			<div class="col-md-2 ml-auto">
+				<span class="material-icons">public</span>
+				<h3 class="my-3">Open Source</h3>
+				<p><span class="brand">meet up!</span> can information about the FILEs (the current directory by default).
+					Sort
+					entries alphabetically if none of -cftuvSUX nor</p>
+			</div>
+			<div class="col-md-2 ml-auto mr-auto">
+				<span class="material-icons">money_off</span>
+				<h3 class="my-3">Free</h3>
+				<p>information about the FILEs (the current directory by default). Sort
+					entries alphabetically if none of -cftuvSUX nor</p>
+			</div>
+			<div class="col-md-2 mr-auto">
+
+				<span class="material-icons">phone_iphone</span>
+				<h3 class="my-3">Cross platform</h3>
+				<p>information about the FILEs (the current directory by default). Sort
+					entries alphabetically if none of -cftuvSUX nor</p>
+			</div>
+		</div>
+
+	</div>
+	<div class="docs-container text-center" id="docs">
+		<h1>Read our documentation</h1>
+		<p>Learn how to use meet up! properly by reading our guides</p>
+		<a href="#">
+			<button class="btn btn-large mb-5">
+				<span class="material-icons mx-2">book</span>
+				Go to Docs
+			</button>
+		</a>
+	</div>
+
+	<script>
+		document.getElementsByClassName("navbar")[0].classList.add("bg-transparent");
+		document.getElementsByClassName("navbar")[0].classList.remove("bg-light");
+
+		const colorChange = function(){
+		console.log(window.scrollY)
+		if(window.scrollY > document.getElementById("features").offsetTop - 80) {
+			document.getElementsByClassName("navbar")[0].classList.remove("bg-transparent");
+			document.getElementsByClassName("navbar")[0].classList.add("bg-light");
+		} else {
+			document.getElementsByClassName("navbar")[0].classList.add("bg-transparent");
+			document.getElementsByClassName("navbar")[0].classList.remove("bg-light");
+		}
+		}
+
+		window.onscroll = colorChange;
+		Array.from(document.getElementsByClassName("nav-link")).forEach(elem =>
+			elem.onclick = colorChange
+		);
+	</script>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'scheduler/detail.html' %}
+
+{% block title %} Log In {% endblock %}
+{% block desc%}
+	Forgot password? <a href="#">Reset your password</a></p>
+	<p>If you don't have an meet up! account you can sign up using
+		this <a href="{% url 'register_view' %}">link</a>
+	</p>
+{% endblock %}
+
+{% block main %}
+	{% for message in messages %}
+		<p class="error">{{ message }}</p>
+	{% endfor %}
+	
+	<form method="POST">
+		{% csrf_token %}
+		{% for field in form %}
+			{{ field.label_tag }}<br/>
+			{{ field }}<br/>
+			<p class="errors">{{ field.errors }}</p>
+		{% endfor %}
+
+		<button type="submit" class="btn">
+			<span class="material-icons mx-2">check</span>
+			Log In
+		</button>
+	</form>
+{% endblock %}

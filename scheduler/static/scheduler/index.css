@@ -1,0 +1,48 @@
+body {
+	background-size: 100% 100%;
+	background: url('./img/bg3.jpg');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+
+.navbar {
+	background: rgba(0, 0, 0, 0);
+}
+
+.hero {
+	font-size: 6em;
+	text-align: right;
+}
+
+.navbar .nav-item a {
+	color: #ffffff;
+
+	font-size: 1.2em;
+}
+
+
+.text-white {
+	color: #ffffff;
+}
+
+.banner-container {
+	width: 100%;
+	padding: 4em;
+	color: #fff;
+}
+.features-container {
+	background: #ffffff;
+	width: 100%;
+	padding: 4em;
+}
+
+.features-container .material-icons {
+	font-size: 3em;
+}
+
+.docs-container {
+	background: #4b1b9f;
+	color: #ffffff;
+	padding-top: 3em;
+}

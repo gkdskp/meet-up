@@ -1,0 +1,50 @@
+{% extends 'scheduler/base.html' %}
+
+{% block content %}
+	<div class="row my-5">
+		<h1 class="cols-lg-8 mx-3">Notifications</h1>
+	</div>
+	<div class="row">
+		<table class="table table-striped">
+			<tbody>
+				<tr>
+					<td> <b>New notifications</b> </td>
+				</tr>
+				{% if not active_notifications %}
+					<tr>
+						<td>No new notifications</td>
+					</tr>
+				{% endif %}
+				{% for notification in active_notifications %}
+					<tr>
+						<td class="font-weight-bold">{{ notification.sender }} {{ notification.get_action_display }} <a
+								href="{% url 'meeting_view' notification.meeting.mid %}">{{ notification.meeting.title }}</a>
+
+							{% if notification.action < 3 %} with the following message:<br>{% endif %}
+							<blockquote>{{ notification.message }}</blockquote><br />
+							<p class="small">{{ notification.decision_time }}</p>
+						</td>
+					</tr>
+				{% endfor %}
+				<tr>
+					<td> <b>Past notifications</b> </td>
+				</tr>
+				{% if not seen_notifications %}
+					<tr>
+						<td>No past notifications</td>
+					</tr>
+				{% endif %}
+				{% for notification in seen_notifications %}
+					<tr>
+						<td class="text_weight_bold">{{ notification.sender }} {{ notification.get_action_display }} <a
+								href="{% url 'meeting_view' notification.meeting.mid %}">{{ notification.meeting.title }}</a>
+							{% if notification.action < 3 %} with the following message:<br>{% endif %}
+							<blockquote>{{ notification.message }}</blockquote><br />
+							<p class="small">{{ notification.decision_time }}</p>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

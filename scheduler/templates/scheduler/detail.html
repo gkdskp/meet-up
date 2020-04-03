@@ -1,0 +1,17 @@
+{% extends 'scheduler/base.html' %}
+
+{% block content %}
+<div class="row m-md-auto">
+	<div class="col-lg-2 my-lg-5 ml-lg-auto">
+		<h1>{% block title %} {% endblock %}</h1>
+		<p>{% block desc %}{% endblock %}</p>
+	</div>
+	<div class="col-lg-3 mr-lg-auto my-lg-5">
+		{% block main %}{% endblock %}
+	</div>
+	
+</div>
+
+{% endblock %}
+
+{% block imports %}{% endblock %}

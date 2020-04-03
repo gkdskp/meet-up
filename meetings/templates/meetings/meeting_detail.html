@@ -1,0 +1,142 @@
+{% extends 'scheduler/detail.html' %}
+
+{% block title %} {{ meeting.title }} {% endblock %}
+{% block main %}
+		{% for message in messages %}
+			<p class="message alert-success alert">{{ message }}</p>
+		{% endfor %}
+		<span class="tag font-weight-bold">Location</span><br/>
+		<span class="value">{{ meeting.location }}</span><br/><br/>
+
+
+		<span class="tag font-weight-bold">City</span><br/>
+		<span class="value">{{ meeting.city }}</span><br/><br/>
+
+
+		<span class="tag font-weight-bold">Description</span><br/>
+		<span class="value">{{ meeting.desc }}</span><br/><br/>
+
+		{% if participants %}
+		<span class="tag font-weight-bold">Participants</span><br/>
+		<span class="value">
+			{% for participant in participants %}
+				{{ participant.sender.first_name }} {{ participant.sender.last_name }} ({{ participant.sender }}), 
+			{% endfor %}
+		</span><br/><br/>
+		{% endif %}
+
+		{% if perm_level == 0 %}
+
+			{% if declines %}
+			<span class="tag font-weight-bold">Declined</span><br/>
+			<span class="value">
+				{% for participant in declines %}
+					{{ participant.sender.first_name }} {{ participant.sender.last_name }} ({{ participant.sender }}), 
+				{% endfor %}
+			</span><br/><br/>
+			{% endif %}
+
+			{% if invites %}
+			<span class="tag font-weight-bold">Invitees</span><br/>
+			<span class="value">
+				{% for participant in invites %}
+				{{ participant.reciever.first_name }} {{ participant.reciever.last_name }} ({{ participant.reciever }})
+				<small><a href="{% url 'cancel_invite' meeting.mid participant.reciever.username %}"> Cancel invite </a></small>, 
+				{% endfor %}
+			</span><br/><br/>
+			{% endif %}
+		{% endif %}
+
+		<span class="tag font-weight-bold">Time</span><br/>
+		<span class="value">From {{ meeting.start_time }} to {{ meeting.end_time }}</span><br/><br/>
+
+		<span class="tag font-weight-bold">Created By</span><br/>
+		<span class="value">
+
+			{% if meeting.creator.username == user.username %}
+				You
+			{% else %}
+				{{ meeting.creator.first_name }} {{ meeting.creator.last_name }} ({{ meeting.creator.username }})
+			{% endif %}
+		</span><br/><br/>
+
+		{% if not meeting.status %}
+		<p class="message alert-danger alert">This event has been cancelled or finished</p>
+		{% else %}
+		{% if perm_level == 0 %}
+			<a href="{% url 'meeting_update_view' meeting.mid %}">
+
+			<button class="btn">
+				<span class="material-icons mx-2">edit</span>
+				Edit
+			</button>
+			</a>
+
+			<a href="{% url 'meeting_delete_view' meeting.mid %}">
+				<button class="btn bg-danger">
+				<span class="material-icons mx-2">delete</span>
+				Delete
+			</button>
+			</a>
+
+			<a href="{% url 'invite_view' meeting.mid %}">
+
+				<button class="btn">
+					<span class="material-icons mx-2">add</span>
+					Invite
+				</button>
+				</a>
+		{% elif perm_level == 1 %}
+
+		<p class="alert">You are invited to this meeting</p>
+		<a href="{% url 'accept_invite' meeting.mid %}">
+
+			<button class="btn">
+				<span class="material-icons mx-2">check</span>
+				Accept
+			</button>
+			</a>
+
+			<a href="{% url 'decline_invite' meeting.mid %}">
+				<button class="btn bg-danger">
+				<span class="material-icons mx-2">cancel</span>
+				Cancel
+			</button>
+			</a>
+
+			<a href="{% url 'message_view' meeting.mid %}">
+				<button class="btn bg-danger">
+				<span class="material-icons mx-2">send</span>
+				Send a Message
+			</button>
+			</a>
+
+			{% elif perm_level == 2 %}
+			<p class="alert alert-success">You are attending this meeting</p>
+			<a href="{% url 'decline_invite' meeting.mid %}">
+				<button class="btn bg-danger">
+				<span class="material-icons mx-2">cancel</span>
+				Cancel
+			</button>
+
+			<a href="{% url 'message_view' meeting.mid %}">
+				<button class="btn bg-danger">
+				<span class="material-icons mx-2">send</span>
+				Send a Message
+			</button>
+			</a>
+			</a>
+		
+			{% elif perm_level == 3 %}
+			<p class="alert alert-danger">You declined invitation to this meeting</p>
+		{% endif %}
+
+			
+
+
+		{% endif %}
+	</div>
+	
+</div>
+
+{% endblock %}
