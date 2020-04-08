@@ -50,7 +50,7 @@ class NotificationListView(ListView):
                  decision_time__lt=self.request.user.profile.last_notif_check)).order_by('-decision_time')
         except:
             context['seen_notifications'] = None
-        self.request.user.profile.last_notif_check = timezone.now()
+        
         self.request.user.profile.save()
         return context
 

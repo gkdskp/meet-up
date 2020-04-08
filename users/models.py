@@ -8,7 +8,7 @@ class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	location = models.TextField(max_length=500, blank=False)
 	city = models.CharField(max_length=50, blank=False)
-	last_notif_check = models.DateTimeField(blank=True, null=True)
+	last_notif_check = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
 		return f'{self.user.username}\'s Profile'
