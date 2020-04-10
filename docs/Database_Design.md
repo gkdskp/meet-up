@@ -84,9 +84,9 @@ Example Meeting:
 MeetingAction model is used to store actions people take on a meeting. It is the model responsible for sending people notifications
 
 Fields:  
-* meeting  
+* __meeting__  
    A ForeignKey to store the meeting that the action is taken on (on_delete=models.CASCADE, null=True)
-* action   
+* __action__   
   The choice taken on the meeting. It is a SmallIntegerField with choices given below.
   ```
   1 => Invited someone to attend a meeting (only creator of a meeting can send this action)
@@ -95,16 +95,15 @@ Fields:
   4 => Sent an personal message (only invitees of a meeting can send this action)
   5 => Deleted the meeting (only creator of a meeting can send this action)
   ```
-* sender  
+* __sender__  
   A ForeignKey to store the user who took the action (on_delete=models.CASCADE, null=True)
-* reciever  
+* __reciever__  
   A ForeignKey to store the user whom the action is concerned. The recievers of an action will recieve the notifications (on_delete=models.CASCADE, null=True)
-* message  
+* __message__  
   A TextField storing a message regarding the action took
-* decision_time  
+* __decision_time__  
   Time the user sends the action
-* \__str__ method
-
+* __``__str__``__ method  
    Returns the default name of each record as seen in the Django admin panel
 
 Example MeetingAction:
