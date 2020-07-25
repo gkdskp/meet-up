@@ -134,12 +134,14 @@ class MeetingInvite(FormView):
     template_name = 'meetings/meeting_invite.html'
 
     def form_valid(self, form):
-        userslist = self.request.POST.get('users').split(',')
+        userslist = self.request.POST.get('inviteelist').split(',')
         meetingaction = form.save(commit=False)
 
         meetingaction.meeting = Meeting.objects.get(mid=self.kwargs['mid'])
         meetingaction.action = 1
         meetingaction.sender = self.request.user
+
+        print(self.request.POST.get('inviteelist'))
 
         for user in userslist:
             meetingaction.pk = None

@@ -104,13 +104,6 @@
 			</button>
 			</a>
 
-			<a href="{% url 'message_view' meeting.mid %}">
-				<button class="btn bg-danger">
-				<span class="material-icons mx-2">send</span>
-				Send a Message
-			</button>
-			</a>
-
 			{% elif perm_level == 2 %}
 			<p class="alert alert-success">You are attending this meeting</p>
 			<a href="{% url 'decline_invite' meeting.mid %}">

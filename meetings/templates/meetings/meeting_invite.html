@@ -24,7 +24,7 @@
 		</datalist>
 
 		<p class="invitees" id="invitees"></p>
-		<input type="hidden" name="users" id="users" value="">
+		<input type="hidden" name="inviteelist" id="inviteelist" value="">
 		
 		<button type="submit" class="btn">
 			<span class="material-icons mx-2">check</span>
@@ -36,7 +36,7 @@
 
 {% block imports %}
 	<script>
-		const inputelem = document.getElementById("users")
+		const inputelem = document.getElementById("inviteelist")
 		const btn = document.getElementById("add-btn")
 		const userlist = document.getElementById("invitees")
 		const username = document.getElementById("user-input")
@@ -46,5 +46,6 @@
 			userlist.innerText += username.value+ ", "
 			username.value = ""
 		}
+
 	</script>
 {% endblock %}

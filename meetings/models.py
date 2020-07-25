@@ -53,4 +53,4 @@ class MeetingAction(models.Model):
 	decision_time = models.DateTimeField(auto_now=True)
 
 	def __str__(self):
-		return f'{self.meeting.title} - {self.sender} - {self.action}' or ''
+		return f'o' or ''
