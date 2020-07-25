@@ -25,7 +25,7 @@ bin\activate
   
 Now clone the git repository to the folder by running:
 ```
-git clone https://github.com/meeting-scheduler/meeting-scheduler-temp.git
+git clone https://github.com/gkdskp/meeting-scheduler.git
 ```
 
 ## Installing requirements
