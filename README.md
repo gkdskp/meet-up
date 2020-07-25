@@ -2,7 +2,7 @@
 <p align="center">
   <img src="./assets/ss.png">
 </p>
-A webapp made using Django Framework to schedule meetings, appoinments etc. This is not the main repository. Please dont push to it
+A webapp made using Django Framework to schedule meetings, appoinments etc.
 
 # Setting up the environment
 ## Setting up virtual environment
